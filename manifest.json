@@ -5,7 +5,8 @@
 	"version": "1.0",
 	"permissions": [
 		"https://www.facebook.com/",
-		"tabs"
+		"tabs",
+		"background"
 	],
 
 	"page_action": {
