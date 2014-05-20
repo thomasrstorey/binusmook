@@ -1,0 +1,29 @@
+{
+	"manifest_version": 2,
+	"name": "minusbook",
+	"description": "Remove all content from Facebook",
+	"version": "1.0",
+	"permissions": [
+		"https://www.facebook.com/",
+		"tabs"
+	],
+
+	"page_action": {
+		"default_icon": "icon.png",
+		"default_popup": "popup.html"
+	},
+
+	"content_scripts": [
+		{
+			"matches": ["https://www.facebook.com/*"],
+			"js": ["minusbook.js"]
+		}
+	],
+
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": true
+	}
+	
+	
+}
