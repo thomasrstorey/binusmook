@@ -13,30 +13,34 @@ var Program = function(){
 						elements[i].childNodes[j].nodeValue = "";
 					}
 				}
-				if(tag == "a"){
+				if(tag === "a"){
 					elements[i].className = "";
 				}
-				if(tag == "img"){
+				else if(tag === "img"){
 					//elements[i].parentNode.removeChild(elements[i]);
 					elements[i].src = "";
 					elements[i].display = "none";
 					elements[i].className = "";
 					elements[i].alt = "";
+					elements[i].style.backgroundImage = "";
 				}
-				if(tag == "i"){
+				 else if(tag === "div"){
+				 	elements[i].style.backgroundImage = "";
+				}
+				else if(tag === "i"){
 					elements[i].className = "";
 				}
-				if(tag == "button"){
+				else if(tag === "button"){
 					elements[i].className = "";
 				}
-				if(tag == "textarea"){
+				else if(tag === "textarea"){
 					elements[i].placeholder = "";
 					elements[i].title = "";
 				}
-				if(tag == "input"){
+				else if(tag === "input"){
 					elements[i].value = "";
 				}
-				if(tag == "span"){
+				else if(tag === "span"){
 					if(elements[i].className.indexOf("emoticon") != -1){
 						elements[i].className = "";
 					}
@@ -59,7 +63,7 @@ chrome.runtime.onMessage.addListener(
     console.log(sender.tab ?
                 "from a content script:" + sender.tab.url :
                 "from the extension");
-    if (request.greeting == "ON"){
+    if (request.greeting === "ON"){
     	minus = setInterval(function(){
 	    	program.run = true;
 	    	program.removeTagInnerText("div");
@@ -79,7 +83,7 @@ chrome.runtime.onMessage.addListener(
       	sendResponse({farewell: "script ON"});
 
 
-    } else if(request.greeting == "OFF"){
+    } else if(request.greeting === "OFF"){
     	program.run = false;
     	clearInterval(minus);
     	sendResponse({farewell: "script OFF"});
