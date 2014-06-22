@@ -79,6 +79,7 @@ chrome.runtime.onMessage.addListener(
 			program.removeTagInnerText("h4");
 			program.removeTagInnerText("textarea");
 			program.removeTagInnerText("button");
+			program.removeTagInnerText("li");
 	  	}, 1000);
       	sendResponse({farewell: "script ON"});
 
