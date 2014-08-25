@@ -24,8 +24,14 @@ var Program = function(){
 					elements[i].alt = "";
 					elements[i].style.backgroundImage = "";
 				}
+				else if(tag === "embed"){
+					elements[i]="";
+				}
 				 else if(tag === "div"){
 				 	elements[i].style.backgroundImage = "";
+				 	if(elements[i].className === "swfObject"){
+				 		elements[i].removeChild(elements[i].childNodes[0]);
+				 	}
 				}
 				else if(tag === "i"){
 					elements[i].className = "";
@@ -72,6 +78,7 @@ chrome.runtime.onMessage.addListener(
 			program.removeTagInnerText("p");
 			program.removeTagInnerText("input");
 			program.removeTagInnerText("img");
+			program.removeTagInnerText("embed");
 			program.removeTagInnerText("i");
 			program.removeTagInnerText("abbr");
 			program.removeTagInnerText("strong");
